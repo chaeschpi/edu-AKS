@@ -1,0 +1,23 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: umbdemobackend 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: umbdemobackend
+  template:
+    metadata:
+      labels:
+        app: umbdemobackend 
+    spec:
+      containers:
+        - name: umbdemobackend 
+          image: acrdemoeuw9986.azurecr.io/multipod/backend:latest
+          ports:
+          - containerPort: 5000
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "500Mi"  

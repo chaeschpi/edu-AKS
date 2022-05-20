@@ -1,0 +1,29 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: umbdemofrontend 
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: umbdemofrontend
+  template:
+    metadata:
+      labels:
+        app: umbdemofrontend 
+    spec:
+      containers:
+        - name: umbdemofrontend 
+          image: acrdemoeuw9986.azurecr.io/multipod/frontend:latest
+          resources:
+            limits:
+              cpu: "50m"
+              memory: "64Mi"
+          ports:
+          - containerPort: 80
+          env:
+          - name: SVC
+            value: "serviceapi"
+          envFrom:
+           - configMapRef:
+               name: envmapdemo
