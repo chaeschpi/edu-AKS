@@ -20,3 +20,4 @@ resource "azurerm_subnet" "snet-appGw" {
   resource_group_name = azurerm_resource_group.rgAKS.name
   
 }
+

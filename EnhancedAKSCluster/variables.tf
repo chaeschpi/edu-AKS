@@ -39,7 +39,7 @@ variable "kubernetes_version" {
 
 variable "agent_count" {
   type = number
-  default = 1
+  default = 3
 }
 
 variable "vm_size" {

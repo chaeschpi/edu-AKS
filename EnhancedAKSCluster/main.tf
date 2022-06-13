@@ -52,3 +52,13 @@ resource "azurerm_kubernetes_cluster" "k8s" {
 
 }
 
+
+resource "azurerm_role_assignment" "aksCluster" {
+  scope = azurerm_resource_group.rgAKS.id
+  principal_id = azurerm_kubernetes_cluster.k8s.identity[0].principal_id
+  role_definition_name = "Contributor"
+}
+
+# data "azurerm_route_table" "aks" {
+#   resource_group_name = azurerm_kubernetes_cluster.k8s.node_resource_group
+#   name = azurerm_kubernetes_cluster.k8s.

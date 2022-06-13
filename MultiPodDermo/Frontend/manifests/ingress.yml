@@ -1,4 +1,6 @@
-apiVersion: extensions/v1beta1
+
+          
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: umbdemofrontend
@@ -10,11 +12,8 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: frontendserviceint
-          servicePort: 80
-      - path: /backend
-        backend:
-          serviceName: serviceapi
-          servicePort: 80
-          
-       
+          service:
+            name: frontendserviceint
+            port:
+              number: 80
+        pathType: Prefix    

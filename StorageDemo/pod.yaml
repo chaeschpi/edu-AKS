@@ -22,6 +22,5 @@ spec:
   - name: claim
     persistentVolumeClaim:
       claimName: logvol
-  selector:
-    app: pvc-demo
+
 
